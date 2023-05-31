@@ -1,0 +1,113 @@
+[
+  {
+    "id": 0,
+    "fileNumber": 123,
+    "name": "Honda",
+    "model": "Accord",
+    "price": "$25,500.00",
+    "mainImage": "accord.png",
+    "images": [
+      "accord.png",
+      "accord(den).png",
+      "accord(trang).png",
+      "accord(xam).png"
+    ],
+    "description": "dolorem architecto ut pariatur quae qui suscipit",
+    "uploadedOn": "01/03/2023",
+    "year": 2021
+  },
+  {
+    "id": 1,
+    "fileNumber": 234,
+    "name": "Honda",
+    "model": "Civic",
+    "price": "$25,500.00",
+    "mainImage": "civic.png",
+    "images": [
+      "civic.png",
+      "civic(den).png",
+      "civic(do).png",
+      "civic(trang).png",
+      "civic(xam).png",
+      "civic(xanh).png"
+    ],
+    "description": "dolorem architecto ut pariatur quae qui suscipit",
+    "uploadedOn": "01/04/2023",
+    "year": 2021
+  },
+  {
+    "id": 2,
+    "fileNumber": 345,
+    "name": "Honda",
+    "model": "CR V",
+    "price": "$25,500.00",
+    "mainImage": "cr-v.png",
+    "images": [
+      "cr-v.png",
+      "cr-v(bac).png",
+      "cr-v(den-dac-biet).png",
+      "cr-v(den).png",
+      "cr-v(do).png",
+      "cr-v(titan).png",
+      "cr-v(trang).png",
+      "cr-v(xanh-dam).png"
+    ],
+    "description": "dolorem architecto ut pariatur quae qui suscipit",
+    "uploadedOn": "01/04/2023",
+    "year": 2021
+  },
+  {
+    "id": 3,
+    "fileNumber": 456,
+    "name": "Toyota",
+    "model": "Alphard Luxury",
+    "price": "$25,500.00",
+    "mainImage": "alphard-luxury.png",
+    "images": [
+      "alphard-luxury.png",
+      "alphard-luxury(den).png",
+      "alphard-luxury(nau).png",
+      "alphard-luxury(trang).png"
+    ],
+    "description": "dolorem architecto ut pariatur quae qui suscipit",
+    "uploadedOn": "10/04/2023",
+    "year": 2021
+  },
+  {
+    "id": 4,
+    "fileNumber": 567,
+    "name": "Toyota",
+    "model": "Camry",
+    "price": "$25,500.00",
+    "mainImage": "camry-2.0g.png",
+    "images": [
+      "camry-2.0g.png",
+      "camry-2.0g(den-xanh).png",
+      "camry-2.0g(den).png",
+      "camry-2.0g(do).png",
+      "camry-2.0g(trang).png"
+    ],
+    "description": "dolorem architecto ut pariatur quae qui suscipit",
+    "uploadedOn": "10/04/2023",
+    "year": 2021
+  },
+  {
+    "id": 5,
+    "fileNumber": 678,
+    "name": "Toyota",
+    "model": "Corolla Altis 1.8G",
+    "price": "$25,500.00",
+    "mainImage": "corolla-altis-1.8g.png",
+    "images": [
+      "corolla-altis-1.8g.png",
+      "corolla-altis-1.8g(bac).png",
+      "corolla-altis-1.8g(den).png",
+      "corolla-altis-1.8g(do).png",
+      "corolla-altis-1.8g(trang).png",
+      "corolla-altis-1.8g(xam).png"
+    ],
+    "description": "dolorem architecto ut pariatur quae qui suscipit",
+    "uploadedOn": "20/04/2023",
+    "year": 2021
+  }
+]

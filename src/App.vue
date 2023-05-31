@@ -1,28 +1,43 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="container">
+    <MainMenuPage />
+    <footer-bar />
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import Vue from "vue";
+import Component from "vue-class-component";
+import MainMenuPage from "./components/navbar/MainMenuPage.vue";
+import FooterBar from "./components/footerbar/FooterBar.vue";
+import firebase from "firebase/app";
+import "firebase/auth";
 
-export default {
-  name: 'App',
+@Component({
   components: {
-    HelloWorld
-  }
-}
+    MainMenuPage,
+    FooterBar,
+  },
+  created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.$store.commit("updateUser", user);
+    });
+    this.$store.dispatch("getDbInfo");
+  },
+})
+export default class App extends Vue {}
 </script>
 
-<style>
+<style lang="scss">
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

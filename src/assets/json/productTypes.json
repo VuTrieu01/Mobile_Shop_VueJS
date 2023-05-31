@@ -1,0 +1,52 @@
+[
+  {
+    "icon": "<i class='bi bi-phone'></i>",
+    "name": "Cell Phone",
+    "type": "phone"
+  },
+  {
+    "icon": "<i class='bi bi-laptop'></i>",
+    "name": "Laptop",
+    "type": "laptop"
+  },
+  {
+    "icon": "<i class='bi bi-headphones'></i>",
+    "name": "Headphone",
+    "type": "headphone"
+  },
+  {
+    "icon": "<i class='bi bi-watch'></i>",
+    "name": "Watch",
+    "type": "watch"
+  },
+  {
+    "icon": "<i class='bi bi-battery-full'></i>",
+    "name": "Charger",
+    "type": "charger"
+  },
+  {
+    "icon": "<i class='bi bi-phone-landscape'></i>",
+    "name": "Phone Case",
+    "type": "phoneCase"
+  },
+  {
+    "icon": "<i class='bi bi-phone'></i>",
+    "name": "Ipad",
+    "type": "ipad"
+  },
+  {
+    "icon": "<i class='bi bi-tv'></i>",
+    "name": "Screen",
+    "type": "screen"
+  },
+  {
+    "icon": "<i class='bi bi-mouse'></i>",
+    "name": "Mouse",
+    "type": "mouse"
+  },
+  {
+    "icon": "<i class='bi bi-keyboard'></i>",
+    "name": "Keyboard",
+    "type": "keyboard"
+  }
+]
