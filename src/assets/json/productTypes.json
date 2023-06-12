@@ -48,5 +48,10 @@
     "icon": "<i class='bi bi-keyboard'></i>",
     "name": "Keyboard",
     "type": "keyboard"
+  },
+  {
+    "icon": "<i class='bi bi-tv'></i>",
+    "name": "iMac",
+    "type": "imac"
   }
 ]

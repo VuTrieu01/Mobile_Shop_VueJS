@@ -34,6 +34,7 @@ export default new Vuex.Store<RootState>({
     products: [],
     news: [],
     filterProduct: "all",
+    currentPage: 1,
   },
   getters: {
     checkEmail(state) {
@@ -43,13 +44,14 @@ export default new Vuex.Store<RootState>({
         : false;
     },
     slideProducts(state) {
+      state.currentPage = 1;
       return state.products.slice(0, 8);
     },
     productFilter(state) {
-      if (state.filter == "all") return state.products;
+      if (state.filterProduct == "all") return state.products;
       else
         return state.products.filter((item) =>
-          item.type.includes(state.filter)
+          item.type.includes(state.filterProduct)
         );
     },
     remaining(state) {

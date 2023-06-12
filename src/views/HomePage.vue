@@ -32,7 +32,10 @@
       </div>
     </div>
     <div class="h4 fw-bold mt-2">HOT PRODUCTS</div>
-    <ProductItem :products="$store.getters.slideProducts" />
+    <ProductItem
+      :products="$store.getters.slideProducts"
+      :activePagination="false"
+    />
     <div class="h4 fw-bold mt-2">NEWS OF THE DAY</div>
     <new-item />
   </div>

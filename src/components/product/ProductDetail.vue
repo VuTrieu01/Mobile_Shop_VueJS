@@ -1,16 +1,32 @@
 <template>
   <div>
     <loading-item v-if="loading" />
-    <div class="route">
-      <span class="route__link"> Home </span>
-      <span> / </span>
-
-      <span class="route__link"> Tất cả sản phẩm </span>
-      <span> / </span>
-      <span class="route__link"> {linkProduct} </span>
-    </div>
-    <form>
-      <div class="container" v-for="(item, index) in getProducts" :key="index">
+    <form v-for="(item, index) in getProducts" :key="index">
+      <div class="route">
+        <router-link
+          class="route__link"
+          :to="{ name: 'Home', params: { pageTitle: 'Main Page' } }"
+        >
+          Home
+        </router-link>
+        <span> / </span>
+        <router-link class="route__link" :to="{ name: 'Product' }">
+          All
+        </router-link>
+        <span> / </span>
+        <router-link
+          class="route__link"
+          :to="{
+            name: 'Product',
+            params: {
+              productType: item.type,
+            },
+          }"
+        >
+          {{ showType(item.type) }}
+        </router-link>
+      </div>
+      <div class="container">
         <div class="container__img">
           <img :src="item.image" alt="" />
         </div>
@@ -61,6 +77,34 @@ export default class ProductDetail extends Vue {
       (val: Product) => val.id === this.productId
     );
   }
+  public showType(type: string) {
+    switch (type) {
+      case "phone":
+        return "Cell Phone";
+      case "laptop":
+        return "Laptop";
+      case "headphone":
+        return "Headphone";
+      case "watch":
+        return "Watch";
+      case "charger":
+        return "Charger";
+      case "phoneCase":
+        return "Phone Case";
+      case "ipad":
+        return "Ipad";
+      case "mouse":
+        return "Mouse";
+      case "keyboard":
+        return "Keyboard";
+      case "screen":
+        return "Screen";
+      case "imac":
+        return "iMac";
+      default:
+        return "null";
+    }
+  }
   mounted() {
     window.scrollTo(0, 0);
   }
@@ -74,6 +118,7 @@ export default class ProductDetail extends Vue {
   &__link {
     font-size: 16px;
     font-weight: bold;
+    text-decoration: none;
     color: #000000;
   }
   &__link:hover {
@@ -119,6 +164,7 @@ export default class ProductDetail extends Vue {
       align-items: flex-start;
       flex-direction: column;
       h2 {
+        text-align: start;
         font-size: 30px;
         color: rgb(83, 82, 82);
         font-weight: bold;

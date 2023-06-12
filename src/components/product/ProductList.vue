@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <ProductItem :products="$store.getters.productFilter" />
+    <ProductItem
+      :products="$store.getters.productFilter"
+      :activePagination="true"
+    />
   </div>
 </template>
 
@@ -15,7 +18,17 @@ import NewItem from "@/components/new/NewItem.vue";
     NewItem,
   },
 })
-export default class ProductList extends Vue {}
+export default class ProductList extends Vue {
+  public productType: string = this.$route.params.productType;
+  mounted() {
+    this.$store.state.currentPage = 1;
+    if (this.productType) {
+      this.$store.state.filterProduct = this.productType;
+    } else {
+      this.$store.state.filterProduct = "all";
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

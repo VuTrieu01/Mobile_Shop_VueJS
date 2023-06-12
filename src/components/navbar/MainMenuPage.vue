@@ -40,32 +40,35 @@
             <a>Login/Register</a>
           </router-link>
         </div>
-        <div v-else @click="toggleProfileMenu" class="profile">
-          <span>{{ $store.state.profileInitials }}</span>
-          <div v-show="profileMenu" class="profile__menu">
-            <div class="info">
-              <p class="initials">{{ $store.state.profileInitials }}</p>
-              <div class="right">
-                <p>{{ $store.state.name }}</p>
-                <p>{{ $store.state.user.email }}</p>
+        <div class="d-flex align-items-center" v-else>
+          <div class="cart"><i class="bi bi-cart"></i></div>
+          <div @click="toggleProfileMenu" class="profile">
+            <span>{{ $store.state.profileInitials }}</span>
+            <div v-show="profileMenu" class="profile__menu">
+              <div class="info">
+                <p class="initials">{{ $store.state.profileInitials }}</p>
+                <div class="right">
+                  <p>{{ $store.state.name }}</p>
+                  <p>{{ $store.state.user.email }}</p>
+                </div>
               </div>
-            </div>
-            <div class="options">
-              <div>
-                <router-link class="option" to="#">
-                  <i class="bi bi-person"></i>
-                  <p>Profile</p>
-                </router-link>
-              </div>
-              <div>
-                <router-link class="option" to="#">
-                  <i class="bi bi-box-seam"></i>
-                  <p>Order status</p>
-                </router-link>
-              </div>
-              <div @click="signOut" class="option">
-                <i class="bi bi-box-arrow-right"></i>
-                <p>Sign out</p>
+              <div class="options">
+                <div>
+                  <router-link class="option" to="#">
+                    <i class="bi bi-person"></i>
+                    <p>Profile</p>
+                  </router-link>
+                </div>
+                <div>
+                  <router-link class="option" to="#">
+                    <i class="bi bi-box-seam"></i>
+                    <p>Order status</p>
+                  </router-link>
+                </div>
+                <div @click="signOut" class="option">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <p>Sign out</p>
+                </div>
               </div>
             </div>
           </div>
@@ -141,6 +144,9 @@ export default class MainMenuPage extends Vue {
         color: #3f51b5;
       }
     }
+  }
+  .cart {
+    margin-right: 10px;
   }
   .profile {
     position: relative;

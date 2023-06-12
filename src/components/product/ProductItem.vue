@@ -1,45 +1,46 @@
 <template>
-  <div class="product__container">
-    <loading-item v-if="loading" />
-    <div
-      class="product__container--items"
-      v-for="(item, index) in getProducts"
-      :key="index"
-    >
-      <div class="product__item">
-        <router-link
-          class="product__item--hover"
-          :to="{
-            name: 'ProductDetail',
-            params: {
-              productName: item.name,
-              productId: item.id,
-            },
-          }"
-        >
-          <img class="product__img" :src="item.image" alt="" />
-          <h3>{{ item.name }}</h3>
-        </router-link>
-        <h2>
-          {{ formatMoney(item.price) }}
-        </h2>
-        <div class="form-button">
-          <button class="btn-buy">
-            <i>Mua ngay</i>
-          </button>
-          <button class="btn-add">
-            <i>Thêm vào giỏ hàng</i>
-          </button>
+  <div>
+    <div class="product__container">
+      <loading-item v-if="loading" />
+      <div
+        class="product__container--items"
+        v-for="(item, index) in getProducts"
+        :key="index"
+      >
+        <div class="product__item">
+          <router-link
+            class="product__item--hover"
+            :to="{
+              name: 'ProductDetail',
+              params: {
+                productName: item.name,
+                productId: item.id,
+              },
+            }"
+          >
+            <img class="product__img" :src="item.image" alt="" />
+            <h3>{{ item.name }}</h3>
+          </router-link>
+          <h2>
+            {{ formatMoney(item.price) }}
+          </h2>
+          <div class="form-button">
+            <button class="btn-add">
+              <i class="bi bi-cart-plus"> Giỏ hàng</i>
+            </button>
+            <button class="btn-buy">
+              <i>Mua ngay</i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-    <Paginate
-      :page-count="pageCount"
-      :click-handler="changePage"
-      :prev-text="'Prev'"
-      :next-text="'Next'"
-      :container-class="'pagination'"
-      :page-class="'page-item'"
+    <pagination
+      v-if="activePagination"
+      :totalPages="pageCount"
+      :maxVisibleButtons="itemsPerPage"
+      :currentPage="$store.state.currentPage"
+      @pagechanged="changePage"
     />
   </div>
 </template>
@@ -50,14 +51,20 @@ import Vue from "vue";
 import LoadingItem from "../loading/LoadingItem.vue";
 import { formatMoney } from "../../helpers/rules";
 import { Product } from "@/models";
+import Pagination from "../pagination/Pagination.vue";
 
 @Component({
   components: {
     LoadingItem,
+    Pagination,
   },
   props: {
     products: {
       type: Array,
+      required: true,
+    },
+    activePagination: {
+      type: Boolean,
       required: true,
     },
   },
@@ -65,25 +72,23 @@ import { Product } from "@/models";
 export default class ProductItem extends Vue {
   public loading: boolean = true;
   public products!: Product[];
-  public itemsPerPage: number = 3;
-  public currentPage: number = 1;
+  public activePagination!: boolean;
+  public itemsPerPage: number = 12;
   public formatMoney(money: number) {
     return formatMoney(money);
   }
   public get pageCount() {
-    return Math.ceil(this.getProducts.length) / this.itemsPerPage;
+    return Math.ceil(this.products.length / this.itemsPerPage);
   }
   public get getProducts() {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const startIndex = (this.$store.state.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.$store.dispatch("getDbProduct");
     if (this.products.length > 0) this.loading = false;
     return this.products.slice(startIndex, endIndex);
   }
-  changePage(pageNumber: number): void {
-    console.log("a" + pageNumber);
-
-    this.currentPage = pageNumber;
+  public changePage(pageNumber: number) {
+    this.$store.state.currentPage = pageNumber;
   }
 }
 </script>
@@ -154,38 +159,36 @@ export default class ProductItem extends Vue {
         font-weight: 900;
       }
       .form-button {
-        display: flex;
-        .btn-buy {
-          margin-right: 15px;
-          width: 50%;
+        .btn-add {
           opacity: 1;
           visibility: hidden;
-          padding: 7px 15px;
+          padding: 10px 15px;
+          border: none;
+          border-radius: 5px;
+          background-color: rgb(200, 200, 200);
+          margin-right: 15px;
+        }
+        display: flex;
+        .btn-buy {
+          opacity: 1;
+          visibility: hidden;
+          padding: 10px 15px;
           border: none;
           border-radius: 5px;
           background-color: rgb(255, 10, 10);
         }
-        .btn-add {
-          width: 50%;
-          opacity: 1;
-          visibility: hidden;
-          padding: 7px 15px;
-          border: none;
-          border-radius: 5px;
-          background-color: rgb(208, 208, 208);
-        }
         i {
           color: white;
-          font-size: 16px;
+          font-size: 14px;
           font-weight: bold;
-        }
-        .btn-buy:hover {
-          background-color: rgb(178, 31, 31);
-          cursor: pointer;
-          transition: 0.5s;
         }
         .btn-add:hover {
           background-color: rgb(151, 151, 151);
+          cursor: pointer;
+          transition: 0.5s;
+        }
+        .btn-buy:hover {
+          background-color: rgb(178, 31, 31);
           cursor: pointer;
           transition: 0.5s;
         }

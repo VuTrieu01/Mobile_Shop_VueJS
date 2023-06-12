@@ -15,4 +15,5 @@ export interface RootState {
   products: Product[];
   news: New[];
   filterProduct: string;
+  currentPage: number;
 }

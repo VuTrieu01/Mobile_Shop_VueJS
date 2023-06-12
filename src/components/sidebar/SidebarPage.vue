@@ -3,7 +3,7 @@
     <div class="sidebar">
       <div
         class="sidebar__item"
-        :class="{ active: $store.state.filter == all }"
+        :class="{ active: $store.state.filterProduct == all }"
         @click="productFilter(all)"
       >
         <div class="sidebar__item--icon">
@@ -13,7 +13,7 @@
       </div>
       <div
         class="sidebar__item"
-        :class="{ active: $store.state.filter == item.type }"
+        :class="{ active: $store.state.filterProduct == item.type }"
         v-for="(item, index) in productTypes"
         :key="index"
         @click="productFilter(item.type)"
@@ -35,7 +35,8 @@ export default class SidebarPage extends Vue {
   public productTypes: any = productTypes;
   public all: string = "all";
   public productFilter(type: string) {
-    return (this.$store.state.filter = type);
+    this.$store.state.currentPage = 1;
+    return (this.$store.state.filterProduct = type);
   }
 }
 </script>
