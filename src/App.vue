@@ -30,7 +30,6 @@ export default class App extends Vue {}
 
 <style lang="scss">
 .container {
-  max-width: 600px;
   margin: 0 auto;
 }
 #app {
