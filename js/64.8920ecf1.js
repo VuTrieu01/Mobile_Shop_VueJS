@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkmobile_shop"]=self["webpackChunkmobile_shop"]||[]).push([[64],{5064:function(u,n,e){e.r(n),e.d(n,{default:function(){return c}});var l=function(){var u=this,n=u._self._c;return n("h1",[u._v("About")])},t=[],s=e(1001),o={},r=(0,s.Z)(o,l,t,!1,null,null,null),c=r.exports}}]);
+//# sourceMappingURL=64.8920ecf1.js.map
